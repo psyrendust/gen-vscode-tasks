@@ -1,0 +1,10 @@
+{
+  "name": "@name/pkg2",
+  "version": "1.0.0",
+  "description": "Test pkg2",
+  "license": "MIT",
+  "scripts": {
+    "build": "echo build pkg2",
+    "test": "echo test pkg2"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "xo.format.enable": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "spence-s.linter-xo"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

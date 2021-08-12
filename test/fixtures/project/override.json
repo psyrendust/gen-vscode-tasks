@@ -1,0 +1,9 @@
+{
+  "presentation": {
+    "clear": false,
+    "panel": "shared",
+    "reveal": "never",
+    "showReuseMessage": true
+  },
+  "problemMatcher": ["$eslint-stylish"]
+}

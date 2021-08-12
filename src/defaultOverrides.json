@@ -1,0 +1,10 @@
+{
+  "type": "shell",
+  "presentation": {
+    "clear": true,
+    "panel": "shared",
+    "reveal": "always",
+    "showReuseMessage": false
+  },
+  "problemMatcher": []
+}
