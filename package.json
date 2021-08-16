@@ -36,12 +36,6 @@
     "semantic-release": "semantic-release",
     "tdd": "ava --watch"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run test",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "dependencies": {
     "chalk": "^4.1.2",
     "find-up": "^5.0.0",
