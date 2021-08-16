@@ -1,3 +1,9 @@
+### [1.1.1](https://github.com/psyrendust/gen-vscode-tasks/compare/v1.1.0...v1.1.1) (2021-08-16)
+
+### Bug Fixes
+
+- **workflow:** set npm access to public ([4c6d2fc](https://github.com/psyrendust/gen-vscode-tasks/commit/4c6d2fc9b87e9fcdca645911fcd6165a96023fda))
+
 ## [1.1.0](https://github.com/psyrendust/gen-vscode-tasks/compare/v1.0.0...v1.1.0) (2021-08-16)
 
 ### Features
