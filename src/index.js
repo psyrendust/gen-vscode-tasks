@@ -1,9 +1,11 @@
 const chalk = require('chalk');
 const fs = require('fs');
-const { EOL } = require('os');
+const os = require('os');
 const path = require('path');
 
 let isVerbose = false;
+
+const EOL = process.env.NODE_ENV === 'test' ? '\n' : os.EOL;
 
 const logWS = fs.createWriteStream(path.join(process.cwd(), 'get-vscode-tasks.log'));
 function logAll(...messages) {
@@ -66,8 +68,8 @@ function createTask(config, workspacePath, name) {
   const projectPathRelative = path.relative(config.workspaceRoot, projectPath);
   const projectRoot = path
     .normalize(projectPathRelative)
-    .replace(`${config.workspaceRoot}/`, '')
-    .replace(`/${name}`, '');
+    .replace(`${config.workspaceRoot}${path.sep}`, '')
+    .replace(`${path.sep}${name}`, '');
   const projectPkgPath = path.join(projectPath, 'package.json');
   info({
     projectPath,
@@ -97,7 +99,7 @@ function createTask(config, workspacePath, name) {
       isBackground,
       options: {
         ...(options || {}),
-        cwd: `${workspaceFolder}/${projectRoot}/${name}`,
+        cwd: path.normalize(`${workspaceFolder}/${projectRoot}/${name}`),
       },
       args,
       group,
@@ -120,7 +122,8 @@ function writeTasksJSON(config, tasks) {
   const output = `// See https://go.microsoft.com/fwlink/?LinkId=733558
 // for the documentation about the tasks.json format
 // Auto-generated with gen-vscode-tasks
-${template}`;
+${template}
+`;
 
   if (config.save) {
     info(`creating '${config.tasksFile}'`);
@@ -156,7 +159,9 @@ function main(config) {
         }
 
         return true;
-      });
+      })
+      .sort(); // Sort folder names for consistency across posix and win32
+    info('names', names);
 
     tasks.push(
       ...names

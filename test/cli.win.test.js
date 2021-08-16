@@ -15,7 +15,7 @@ const macro = async (t, args) => {
   }
 };
 
-const platform = 'posix';
+const platform = 'win32';
 
 test(`${platform} help`, macro, '');
 
