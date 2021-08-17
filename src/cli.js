@@ -17,7 +17,7 @@ const cli = meow(
     --workspace, -w   Generate tasks for each package within a workspace.
     --filter, -f      Generate tasks for workspace packages that only match the filter.
     --save, -s        Save the output to <path>
-    --override        Path to a json you wish to use to override each task config.
+    --override, -o    Path to a json you wish to use to override each task config.
                       The following fields are not configurable: [label, command, options.cwd]
 
   Flags
@@ -87,6 +87,7 @@ const cli = meow(
         isMultiple: false,
         isRequired: false,
         type: 'string',
+        alias: 'o',
       },
       save: {
         isMultiple: false,
