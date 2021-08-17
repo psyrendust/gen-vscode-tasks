@@ -1,4 +1,4 @@
-name: Release
+name: Create Release
 on:
   push:
     branches:
@@ -8,7 +8,12 @@ on:
       - "*.x" # maintenance releases branches
 
   workflow_run:
-    workflows: ["Test"] # Only run this workflow if Test completes
+    workflows: ["Run Tests"] # Only run this workflow if Test completes
+    branches:
+      - master
+      - next
+      - beta
+      - "*.x" # maintenance releases branches
     types:
       - completed
 
