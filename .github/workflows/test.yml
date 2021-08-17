@@ -1,4 +1,4 @@
-name: Run Tests
+name: Run Test
 
 on:
   push:
@@ -18,6 +18,7 @@ on:
 
 jobs:
   test_matrix:
+    name: Run Test Matrix
     strategy:
       matrix:
         node-version:
@@ -54,9 +55,9 @@ jobs:
 
   # separate job to set as required in branch protection,
   # as the build names above change each time Node versions change
-  test:
+  lint:
+    name: Run Lint
     runs-on: ubuntu-latest
-    needs: test_matrix
     steps:
       - name: Checkout
         uses: actions/checkout@v2
