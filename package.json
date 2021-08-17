@@ -27,12 +27,14 @@
     "src/index.js"
   ],
   "scripts": {
-    "fix": "xo --fix && npm run lint:config --write",
+    "fix": "xo --fix && npm run lint:config -- --write",
     "lint": "xo && npm run lint:config",
     "lint:config": "prettier '*/**/*.{json,md}' '*.{json,md}' --ignore-path .gitignore --check",
     "prepare": "husky install",
     "pretest": "npm run lint",
-    "test": "ava",
+    "test": "npm run test:ci",
+    "test:ci": "ava test/cli.test.js -v",
+    "test:ci:win": "ava test/cli.win.test.js -v",
     "semantic-release": "semantic-release",
     "tdd": "ava --watch"
   },
@@ -59,6 +61,6 @@
     "xo": "^0.39.1"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   }
 }

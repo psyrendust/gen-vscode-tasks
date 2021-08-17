@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+      - next
+      - beta
+      - "*.x" # maintenance releases branches
       - renovate/**
 
   pull_request:
@@ -18,7 +21,6 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 10.18.0
           - 12
           - 14
           - 16
@@ -30,13 +32,8 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - name: Test on node ${{ matrix.node }} and ${{ matrix.os }}
+      - name: Test on Node.js ${{ matrix.node-version }} and ${{ matrix.os }}
         uses: actions/checkout@v2
-
-      - name: Setup git config
-        run: |
-          git config --global user.name github-actions
-          git config --global user.email github-actions@github.com
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
@@ -47,8 +44,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run test
+      - name: Run test ${{ matrix.os }}
+        if: ${{ matrix.os != 'windows-latest' }}
         run: npm run test:ci
+
+      - name: Run test ${{ matrix.os }}
+        if: ${{ matrix.os == 'windows-latest' }}
+        run: npm run test:ci:win
 
   # separate job to set as required in branch protection,
   # as the build names above change each time Node versions change

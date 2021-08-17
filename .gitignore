@@ -130,3 +130,6 @@ _book
 
 # Mockserver
 CertificateAuthorityCertificate.pem
+
+# Build files
+test/fixtures/project/.vscode/tasks.json
