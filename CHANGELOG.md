@@ -1,3 +1,9 @@
+## [1.2.0](https://github.com/psyrendust/gen-vscode-tasks/compare/v1.1.1...v1.2.0) (2021-08-17)
+
+### Features
+
+- **cli:** add short flag 'o' for 'override' option ([93b600a](https://github.com/psyrendust/gen-vscode-tasks/commit/93b600a58b0482aa97d57c6c944ea5433a3d3610))
+
 ### [1.1.1](https://github.com/psyrendust/gen-vscode-tasks/compare/v1.1.0...v1.1.1) (2021-08-16)
 
 ### Bug Fixes
